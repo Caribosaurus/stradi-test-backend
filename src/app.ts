@@ -20,7 +20,7 @@ class Applicaction {
 
     settings() {
         this.app.set('port', 4000);
-        this.repository = postgresRepository;
+        this.repository = process.env.Postgres? postgresRepository : mongoRepository;
     }
 
     middlewares() {
