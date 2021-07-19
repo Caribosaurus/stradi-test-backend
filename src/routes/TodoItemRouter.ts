@@ -20,19 +20,7 @@ export function TodoItemRouter(repository: Repository): Router {
         })
     });
     
-    
-    router.post("/", async(req: Request<{},{},TODOItem>, res: Response, next:NextFunction) => {
-        try{
-            repository.createItem(req.body);
-            res.sendStatus(200);
-    
-        }catch(error){
-            res.send(`Erorr ${error}`);
-        }
-    });
-    
-    
-    router.put('/', async(req: Request<{},{},TODOItem>, res: Response, next:NextFunction) => {
+    router.put('/:id', async(req: Request<{id: string},{},TODOItem>, res: Response, next:NextFunction) => {
        try{
         repository.updateItem(req.body);
         res.sendStatus(200);
@@ -49,7 +37,7 @@ export function TodoItemRouter(repository: Repository): Router {
             res.sendStatus(200);
         }catch(error){
             res.send(`Erorr ${error}`);
-            next(error)
+            return res.status(500).json(`Internal Server error: ${error}`);
         }
     });
 
