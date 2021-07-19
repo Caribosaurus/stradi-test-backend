@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "target": "ESNEXT",
+      "module": "umd",
+      "esModuleInterop": true
+    },
+    "exclude": [
+      "node_modules"
+    ]
+  }
